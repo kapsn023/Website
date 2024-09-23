@@ -6,26 +6,36 @@ body {
 }
 
 .container {
-    max-width: 1000px; /* Adjust this value to control the width */
+    max-width: 1200px; /* Adjust this value to control the width */
     margin: 0 auto; /* Centers the container horizontally */
     padding: 20px;
     text-align: left; /* Aligns text to the left */
 }
 
 .wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 100px 100px;
+    display: flex;
+    flex-direction: row;
     gap: 10px;
-    max-width: 1000px; /* Adjust this value to control the width */
+    max-width: 1200px; /* Adjust this value to control the width */
     margin: 0 auto; /* Centers the container horizontally */
     padding: 20px;
     text-align: left; /* Aligns text to the left */
 }
 
 .menu {
-    grid-column: 1;
-    grid-row: 1 / 3;
+    min-width: 200px;
+}
+
+.float-image-left{
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.float-image-right{
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 10px;
 }
 
 header, footer {
@@ -40,7 +50,8 @@ section {
 }
 
 footer {
-    position: fixed;
+    position: sticky;
     bottom: 0;
+    padding-top: 20px;
     width: 100%;
 }
