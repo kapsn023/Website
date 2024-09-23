@@ -18,7 +18,8 @@ body {
     gap: 10px;
     max-width: 1200px; /* Adjust this value to control the width */
     margin: 0 auto; /* Centers the container horizontally */
-    padding: 20px;
+    padding: 0px;
+    padding-bottom: 160px;
     text-align: left; /* Aligns text to the left */
 }
 
@@ -46,11 +47,11 @@ header, footer {
 }
 
 section {
-    padding: 20px;
+    padding: 0px;
 }
 
 footer {
-    position: sticky;
+    position: fixed;
     bottom: 0;
     padding-top: 20px;
     width: 100%;
