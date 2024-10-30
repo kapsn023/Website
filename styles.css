@@ -16,7 +16,7 @@ body {
     display: flex;
     flex-direction: row;
     gap: 10px;
-    max-width: 1200px; /* Adjust this value to control the width */
+    max-width: 1000px; /* Adjust this value to control the width */
     margin: 0 auto; /* Centers the container horizontally */
     padding: 0px;
     padding-bottom: 160px;

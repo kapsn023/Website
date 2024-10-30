@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="author" content="Emmett Kapsner">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emmett Kapsner's Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>2D Rigid Body Simulation</title>
+    <link rel="stylesheet" href="../styles.css">
     <link 
         rel="icon" href="../assets/images/308074121-360px.jpg" 
         type="image/x-icon" 
@@ -13,20 +13,111 @@
 </head>
 <body>
     <header>
-        <h1>2D Rigid Body Simulation</h1>
+        <h1>Emmett's Website</h1>
     </header>
-    <div class="container">
-        
-        <section>
-            <h2>Projects</h2>
-            <!-- List your projects here -->
-             <img
-                src="../assets/images/308074121-480px.jpg"
-                alt="Pigeon"
-                width="480"
-                height="360"
-             >
-        </section>
+    <div class="wrapper">
+        <nav class="menu">
+            <h3>General</h3>
+            <hr/>
+            <p>
+                <a href="index.html">Home</a>
+            </p>
+            <p>
+                <a href="Kapsner Resume.pdf">Resume</a>
+            </p>
+            <h3>Projects</h3> 
+            <hr/>
+            <p>
+                <a href="ongoingprojects.html">Ongoing Projects</a>
+            </p>
+            <p>
+                <a href="shaders.html">GLSL Shaders</a>
+            </p>
+            <p>
+                <a href="sim.html">2D Rigid Body Simulation</a>
+            </p>
+            <p>
+                <a href="raytracer.html">Ray Tracer</a>
+            </p>
+            <p>
+                <a href="otherprojects.html">Other Projects</a>
+            </p>
+            <h3>Other</h3>
+            <hr/>
+            <p>
+                <a href="sisyphus.html">Sisyphus</a>
+            </p>
+            
+    
+        </nav>  
+        <main>
+              
+            <section>
+                <h2>2D Rigid Body Simulation</h2>
+                <!-- <video src="../assets/videos/Main 2023-12-18 12-03-30.mp4" 
+                    controls
+                    width="720"
+                    height="405"
+                    
+                    >
+                    <p>
+                        Your browser doesn't support this video. Here is a
+                        <a href="../assets/videos/Main 2023-12-18 12-03-30.mp4">
+                            link to the video</a> 
+                        instead.
+                      </p>
+                </video> -->
+
+                <p>
+                    For one of my classes, I was tasked with creating some kind of interesting
+                    graphics program. I decided to create a 2D rigid body simulation with
+                    rotation. The enabling of rotation is what made this project difficult.
+                    This stems from the fact that enabling rotation makes detecting collisions 
+                    significantly more complicated. Without rotation, there are more assumptions
+                    that one can make about how different physics objects could be interacting
+                    with one another. 
+                </p>
+
+                <p>
+                    This necessitates the use of a more complicated (and more expensive) means
+                    of detecting collisions. Here I decided to use the Seperating Axis Theorem.
+                    This is a reliable means of detecting collisions between any convex polygons
+                    and spheres. The theorem states that if any line can be drawn in between the
+                    two shapes, then the shapes are not colliding. There are more details in the
+                    video below, but it is applied here by projecting all of the points onto all
+                    of the normals and comparing these projections for overlaps. If there is any
+                    normal that does not have an overlap, then the two objects can not be colliding. 
+                </p>
+
+                <p>
+                    This project was done entirely from scratch in an extension of Java
+                    called Processing. Processing only handles the graphics; everything else is 
+                    handled by my code.
+                </p>
+
+                <p>
+                    This project was a lot of fun and I learned a lot. Though I like to think it
+                    looks pretty good, there is definitely still room for polish and expansion. 
+                    Currently, there are some bizarre behaviours the cause excess rotation. I 
+                    have a few guesses as to the cause of these. For expansion, I would love to
+                    try and take this physics model into the third dimension. The detection
+                    algorithm could easily be modified for this. It would just require more maths.
+                </p>
+
+                <p>
+                    <a href="https://github.com/kapsn023/5611-Final-Project">GitHub</a>
+                </p>
+
+                <iframe width="562" height="382" src="https://www.youtube.com/embed/7nRCyddpddQ"
+                title="5611 Displeased Boxes" frameborder="0" allow="accelerometer; autoplay;
+                clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                
+                
+                
+            </section>
+        </main>
     </div>
     
     <footer>
@@ -34,6 +125,6 @@
         <p>kapsnere@gmail.com</p>
         <p>(715) 702 - 1771</p>
     </footer>
-    <script src="../scripts.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>
