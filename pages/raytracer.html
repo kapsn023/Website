@@ -69,7 +69,30 @@
                     </p>
 
                     <p>
-                        
+                        Ray tracers work by shooting a vector, which are called rays in
+                        this context, into an environment filled by geometric shapes. For 
+                        a single ray and shape, the collision detection is relatively fast 
+                        and cheap. On collision, if the object struck is transparent and/or 
+                        reflective, than one or more rays are then spawned from the point 
+                        of collision. The departing angle for these rays are dependent on 
+                        the normal at the point of collision and the direction from which 
+                        the original ray came. The process of ray spawning more rays could 
+                        go on forever, but a limit is set. Once the rays reach this limit or 
+                        are no longer colliding, then color information is ray to its 
+                        origin ray until the stream of information makes it back to the 
+                        camera and a pixel is colored.
+                    </p>
+
+                    <p>
+                        Lights in this ray tracer are modelled imperfectly but efficiently. 
+                        In this version of ray tracing, rays do not come from light sources, 
+                        but rather the camera itself. This is less realistic but generally 
+                        more efficient. In order to make shadows look somewhat realistic,
+                        a new ray is shot from a collision point to each and every light 
+                        source to check for any objects that would block light from the 
+                        collision point. This ray tracer is smart enough to take into 
+                        account transperency; if an object is at least partially transparent,
+                        it will allow a corresponding amount of light through. 
                     </p>
 
                     <p>
@@ -96,11 +119,22 @@
 
                     <p>
                         This image depicts a very reflective sphere within a larger textured
-                        sphere. This was done by simply shooting another ray from each ray 
-                        sphere intersection and retrieving color information from the second
-                        ray. This second ray can then go onto create other rays if it hits 
-                        another object that is either reflective or transparent. The limit
-                        to the recursion can be modified.
+                        sphere. Though it may look like it, the smaller sphere in the center 
+                        of the image has no texture. What looks to be a texture is simply 
+                        the reflection of the larger sphere around it. 
+                    </p>
+
+                    <p> 
+                        The way this is done is relatively simple. When a ray hits the smaller
+                        sphere, no color information is directly imparted on the ray, as the 
+                        sphere is totally reflective. Instead, a second sphere is spawn and is 
+                        sent off in a direction that is the dictated by the normal vector and 
+                        the angle that the original ray impacted the sphere. This second ray 
+                        then collides with the larger sphere. The color information from the 
+                        texture on the larger sphere is imparted onto the ray, which then 
+                        gives that information to the first ray. From first ray's color 
+                        information, the camera is able to determine what color to make the 
+                        corresponding pixel. This process is done for every pixel in the image.
                     </p>
 
                 </section>
@@ -128,6 +162,14 @@
                         said objects. Both of the secondary rays gather more color 
                         information from any collisions and report weighted versions of
                         these colors back to the original ray. 
+                    </p>
+
+                    <p>
+                        The color information from any secondary rays is weighted by how 
+                        reflective or transparent the original object is. This can be seen 
+                        well by how the shadows on the map differ from one another. Depending 
+                        on the transperency of the spheres above, the corresponding shadow 
+                        will block more or less light from the light source above.
                     </p>
 
                 </section>
@@ -213,6 +255,17 @@
                         It would also involve a lot of interesting and difficult math. 
                         Cylinders are significantly more difficult to show than mere triangles 
                         or spheres. It would definitely prove to be an intersting challenge. 
+                    </p>
+
+                    <p>
+                        The biggest and most ambitious thing I would like to try is to port 
+                        this ray tracer over to the GPU. Currently, it runs completely on the 
+                        CPU without any mutlithreading. Because of this, it can often take 
+                        multiple seconds to get an image. This port should be able to keep 
+                        a lot of the same structure as the orginal ray tracer, but I would 
+                        have to take into account the differing advantages and limitations 
+                        of GPUs. My intention is to write it in GLSL as that is the 
+                        shading language that I know the best.
                     </p>
 
                 </section>
