@@ -57,7 +57,163 @@
 
                 <section>
                 
-                    
+                    <p>
+                        Here are images from a ray tracer that I made independently and
+                        completely from scratch in C. No libraries were used. It 
+                        implements a version of the Blinn-Phong reflection model. It is
+                        able to display both sphere and triangles. These can be textured,
+                        reflective and opaque or transparent. It naturally supports
+                        both point and directional lights. Spotlights were not included,
+                        but this could be added by simply ignoring the influence of 
+                        lights if the ray comes from an angle that is too large.
+                    </p>
+
+                    <p>
+                        
+                    </p>
+
+                    <p>
+                        The GitHub link to the code for this is coming soon. This project 
+                        was completed in a very short period of time, and it needs to be 
+                        clean up substantially.
+                    </p>
+
+                </section>
+
+                <section>
+
+                    <h3>
+                        Reflection and Texturing of Spheres
+                    </h3>
+
+                    <img
+                        src="../assets/images/raytracer/Ray_Tracer_Reflection.jpeg"
+                        alt="Kapsner"
+                        width="300"
+                        height="300"
+                        class="float-image-left"
+                    >
+
+                    <p>
+                        This image depicts a very reflective sphere within a larger textured
+                        sphere. This was done by simply shooting another ray from each ray 
+                        sphere intersection and retrieving color information from the second
+                        ray. This second ray can then go onto create other rays if it hits 
+                        another object that is either reflective or transparent. The limit
+                        to the recursion can be modified.
+                    </p>
+
+                </section>
+
+                <section>
+
+                    <h3>
+                        Multiple Reflective and Transparent Spheres above Textured Triangles
+                    </h3>
+
+                    <img
+                        src="../assets/images/raytracer/Ray_Tracer_Transparent.png"
+                        alt="Kapsner"
+                        width="300"
+                        height="300"
+                        class="float-image-right"
+                    >
+
+                    <p>
+                        There are two important secondary rays in work for each primary ray.
+                        When a primary ray hits an object, it creates two new rays. One 
+                        reflects off of the object if the object is reflective and the other
+                        goes into the object if it is transparent. The path of the secondary
+                        ray that goes into the object is bent according to the normals of 
+                        said objects. Both of the secondary rays gather more color 
+                        information from any collisions and report weighted versions of
+                        these colors back to the original ray. 
+                    </p>
+
+                </section>
+
+                <section>
+
+                    <h3>
+                        Smooth and Flat Shading
+                    </h3>
+
+                    <section class="float-image-left">
+                        <img
+                            src="../assets/images/raytracer/Flat_Shading.png"
+                            alt="Gouraud"
+                            width="380"
+                            height="190"
+                        >
+                        <img
+                            src="../assets/images/raytracer/Smooth_Shading.png"
+                            alt="Phong"
+                            width="380"
+                            height="190"
+                        >
+                    </section>
+
+                    <p>
+                        The ray tracer is capable of both smooth and flat shading for faces.
+                        This is decided on a per face level. Each vertex contains information
+                        for position, but also its normal. The flat shading assumes that the 
+                        face's normal is to be used for each of it's pixels. Smooth shading, 
+                        on the other hand, uses that normal stored in each of the vertices 
+                        and interpolates between them in order to create that smooth
+                        appearence.
+
+                    </p>
+
+                    <p>
+                        Both of these shading techniques 
+                        serve different purposes. Flat shading makes sense as kind of a 
+                        default; it serves as a great starting point and works great for 
+                        any boxy shapes, such as cubes or prisms. However if one wanted to 
+                        use it for a curved shape, it would take a significant amount of
+                        polygons to make it look natural. This is where smooth shading comes 
+                        into play. This type of shading allows one to seemlessly give the 
+                        illusion of a curved surface, even if the shape is made up solely 
+                        of flat faces. This type of shading is less of a necessity in this 
+                        ray tracers, as spheres are fully supported, but it would still be 
+                        helpful for other curved shapes such as cylinders.
+                    </p>
+
+                    <p>
+                        The picture on the left is not the best showcase of smooth shading's 
+                        potential advantages, and I would like to add a better picture for 
+                        that soon.
+                    </p>
+
+
+                </section>
+
+                <section>
+
+                    <h3>
+                        Possible Future Extensions
+                    </h3>
+
+                    <p>
+                        There a lot of potential directions I could take this project. The 
+                        biggest addition that I have plans for in the near future is to add 
+                        model importing. This would allow me to better illustrate the 
+                        capabilities of my ray tracer. Right now, each piece of geometry 
+                        has to be painstakingly placed into the virtual environment by hand.
+                        All of the coordinates and material properties have to be explicitly 
+                        defined for each piece. Model importing would substantially hasten 
+                        this process. I believe that this ray tracer is quite powerful and 
+                        I would like the ability to fully demostrate this. This one change 
+                        would have the greatest impact on the rest of the project.
+                    </p>
+
+                    <p>
+                        It would also be interesting to add the ability to natively display 
+                        cylinders. Currently, a cylinder would have to be made of triangles, 
+                        which does not take full advantage of the capabilities of ray tracers.
+                        It would also involve a lot of interesting and difficult math. 
+                        Cylinders are significantly more difficult to show than mere triangles 
+                        or spheres. It would definitely prove to be an intersting challenge. 
+                    </p>
 
                 </section>
 
