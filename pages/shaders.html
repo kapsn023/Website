@@ -81,9 +81,9 @@
                         The chief difference between the two is that they calculate the normals
                         at different points in the graphics pipeline. A Gouraud shader will 
                         calculate the normals only at the vertices and then interpolate between 
-                        them for each pixel. Because of this. Gouraud shaders will often produce
-                        blocky shading, which can been seen above, especially when comparing it
-                        to the Phong shader to it's right.
+                        them for each pixel. Because of this, Gouraud shaders will often produce
+                        blocky shading, which can be seen above, especially when comparing it
+                        to the Phong shader to its right.
                         Phong shaders, on the other hand, calculate the 
                         normal for every pixel. Thus, the Phong shaders will generally look
                         much better, but are more expensive. 
@@ -91,17 +91,17 @@
 
                     <p>
                         This difference can been seen in the shading code itself. Here, two shaders
-                        go into to actually creating each of the final images; we have vertex and 
+                        go into actually creating each of the final images; we have vertex and 
                         fragment shaders. The vertex shaders are for calculations at the vertex level
                         and fragment shaders are for computations at the pixel level. For the Gouraud,
                         it's plain to see that the vertex shader is substantially more complex than
                         the fragment shader, and this makes sense, as the vertex shader is resposnible
                         for all of the normal calculations. For the Phong shader, this is reversed and
-                        fragment shader does all of the normal calculations. 
+                        the fragment shader does all of the normal calculations. 
                     </p>
 
                     <p>
-                        The right most image is from a "Toon" shader. It is an extension of the Phong
+                        The right-most image is from a "Toon" shader, which is an extension of the Phong
                         shader. The crisp division between the shades of red is produced by using a 
                         ramp to round the pixel colors to one of four. The black outline is produced 
                         by a seperate set of shaders. 
@@ -143,12 +143,12 @@
                         dithering shader. They are both extensions of Phong shading. The aim is 
                         to produce a greyscale image with the use of only black and white. This 
                         can be achieved by placing black and white pixels in proportion with the 
-                        shade of grey this is to be produced. They both use a matrix to coordinate
+                        shade of grey that is to be produced. They both use a matrix to coordinate
                         the placement of these pixels. The only substantial difference between these
                         two is how the position of the current pixel is calculated (as pixels can 
                         not communicate with one another). The image on the left uses a haphazard 
                         means of getting the pixel position and does not produce a stable image.
-                        I did not know at the time that there 
+                        I did not know at the time that  
                         pixel position is readily-availible. The second shader uses the correct 
                         pixel position and the shading effect is therefore stable. That being said,
                         I almost prefer how the original shader looks. 
