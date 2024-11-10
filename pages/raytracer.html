@@ -69,22 +69,22 @@
                         this context, into an environment filled by geometric shapes. For 
                         a single ray and shape, the collision detection is relatively fast 
                         and cheap. On collision, if the object struck is transparent and/or 
-                        reflective, than one or more rays are then spawned from the point 
+                        reflective, then one or more rays are spawned from the point 
                         of collision. The departing angle for these rays are dependent on 
                         the normal at the point of collision and the direction from which 
                         the original ray came. The process of ray spawning more rays could 
-                        go on forever, but a limit is set. Once the rays reach this limit or 
-                        are no longer colliding, then color information is ray to its 
-                        origin ray until the stream of information makes it back to the 
-                        camera and a pixel is colored.
+                        go on forever, but a limit can be set. Once the rays reach this limit or 
+                        are no longer colliding, then color information is sent back up the 
+                        chain of rays until the camera recieves it and the color for the 
+                        corresponding pixel is set.
                     </p>
 
                     <p>
                         Lights in this ray tracer are modelled imperfectly but efficiently. 
-                        In this version of ray tracing, rays do not come from light sources, 
+                        In this version of ray tracing, rays do not come from light sources 
                         but rather the camera itself. This is less realistic but generally 
                         more efficient. In order to make shadows look somewhat realistic,
-                        a new ray is shot from a collision point to each and every light 
+                        a new ray is shot from every collision point to each and every light 
                         source to check for any objects that would block light from the 
                         collision point. This ray tracer is smart enough to take into 
                         account transperency; if an object is at least partially transparent,
