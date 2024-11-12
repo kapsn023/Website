@@ -51,10 +51,11 @@
                 <section>
                 
                     <p>
-                        I am always trying to learn new skills and expand my horizons.
-                        This page is dedicated to that effort. Below, one can find 
-                        some of the projects that I am actively working on. I expect 
-                        this to be somewhat of an eclectic compilation.
+                        This page serves as a collection of all of my past projects 
+                        that are either too old to deserve a dedicated page or I simply 
+                        do not have enough to say about them for a whole page. That being 
+                        said, I still vouch for these projects, some of which I am still 
+                        actively working on.
                     </p>
                     
 
@@ -68,8 +69,78 @@
                         hopefully continue to be. Before starting on it, I knew practically
                         no HTML or CSS, but I sought to remedy this. I wanted to create 
                         a website that was simple and functional, but it would also ideally
-                        look pleasing. 
+                        look pleasing. I believe I've achieved these aims, but there is
+                        still more I would like to add. I would like to experiment with 
+                        Javascipt and I plan on adding some functionality that requires it.
                     </p>
+
+                </section>
+
+                <section>
+
+                    <h3>Cloth Simulation</h3>
+                    <video src="../assets/videos/Double Pendulum 2023-10-20 21-38-16.mp4"
+                        class="float-image-left" 
+                        width="200"
+                        height="200"
+                        controls>
+                        
+                    </video>
+
+                    <p>
+                        This is a simple cloth simulation that I made from scratch in 
+                        Processing. At its core, it is simply made up of multiple 
+                        simulated ropes that are linked to one another. Each node in the 
+                        cloth has collision with other objects but not with other nodes. 
+                        The simulation is relatively fast because it ignores potential
+                        stretching of the cloth. Instead, it relies on constrained 
+                        dynamics between the nodes. After each computational cycle, the 
+                        simulation will try to keep every node within the required distance.
+                        It is not perfect when using smaller sub-steps, so it can result in
+                        some visible stretching. If some stretching is preferred stylistically,
+                        this can be kept.
+                    </p>        
+                    
+                    <p>
+                        <a href="https://github.com/kapsn023/Cloth" 
+                        target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </p>
+
+                </section>
+
+                <section>
+
+                    <h3>Inverse Kinematics</h3>
+                    <p>
+                        This is a simple one arm inverse kinematics simulation that I made in
+                        Processing. The skeleton is able to re-root and switch between two roots.
+                        This enables the skeleton to walk across the screen. Joint limits were
+                        also implemented. This is done by simply clamping the angles of each node
+                        after every update. Object collisions were also implemented. The skeleton
+                        is unable to go through obstacles and instead wraps around them. In this
+                        implementation, only sphere are present as obstacles, but this could
+                        easily be expanded to other shapes. 
+                    </p>
+
+                    <p>
+                        <a href="https://github.com/kapsn023/IK" 
+                        target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </p>
+
+                    <section class="float-image-left">
+                        <video src="../assets/videos/11.11.2023_11.24.37_REC.mp4"
+                            width="370"
+                            height="275"
+                            controls
+                        >
+                        </video>
+                        <video src="../assets/videos/11.11.2023_11.32.54_REC.mp4"
+                            width="370"
+                            height="275"
+                            controls
+                        >
+                        </video>
+                    </section>
 
                 </section>
 
