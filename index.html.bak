@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Emmett Kapsner">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emmett's Homepage</title>
+    <link rel="stylesheet" href="styles.css">
+    <link 
+        rel="icon" href="assets/images/308074121-360px.jpg" 
+        type="image/x-icon" 
+    />
+</head>
+<body>
+    <header>
+        <h1>Emmett's Website</h1>
+    </header>
+    <div class="wrapper">
+        <nav class="menu">
+            <h3>General</h3>
+            <hr/>
+            <p>
+                <a href="index.html">Home</a>
+            </p>
+            <p>
+                <a href="pages/Kapsner Resume.pdf" target="_blank" rel="noopener noreferrer">
+                    Resume</a>
+            </p>
+            <h3>Projects</h3> 
+            <hr/>
+            <p>
+                <a href="pages/shaders.html">GLSL Shaders</a>
+            </p>
+            <p>
+                <a href="pages/sim.html">2D Rigid Body Simulation</a>
+            </p>
+            <p>
+                <a href="pages/raytracer.html">Ray Tracer</a>
+            </p>
+            <p>
+                <a href="pages/otherprojects.html">Other Projects</a>
+            </p>
+            
+    
+        </nav>  
+        <main>
+              
+            <section>
+                <!-- <h2>Home</h2> -->
+                
+
+                <h2>
+                    About Me
+                </h2>
+
+                <img
+                    src="assets/images/IMG_0801.jpg"
+                    alt="Kapsner"
+                    width="360"
+                    height="480"
+                    class="float-image-left"
+                >
+                <p>
+                    My name is Emmett Kapsner and I recently graduated from the 
+                    University of Minnesota with a Bachelor's Degree in Computer Science
+                    and a minor in German. My studies focused heavily on computer graphics
+                    and human
+                    computer interaction. This involved creating everything from a 
+                    feature-complete ray tracer from scratch in C and C++ to implementing
+                    a novel interaction technique in VR using the Godot game engine.
+                    This experience has taught me a wide variety of technical skills
+                    and how to adapt to challenging circumstances.
+                </p>
+                <p>
+                    Though I primarily focused on computer graphics and human-computer
+                    interaction, my interests in computing are broad. I gravitate towards
+                    any niches within software development that requires interesting 
+                    decisions to be made and trade-offs to be weighed. For example, 
+                    the design and implementation of computer graphics often consist of a
+                    balancing act between appearences and performance. 
+                </p>
+                <p>
+                    I am proficient in many programming languages.
+                    These include, but are not limited to, C, C++, Java, and Python. I also
+                    have some experience with Javascript/Typescript, HTML, GLSL, and C#.
+                    I am always trying to learn new skills and languages. This website has
+                    been an attempt to apply HTML and CSS and it is still very much a 
+                    work-in-progress. I plan on adding some Javascript functionality once
+                    I find an excuse to.
+                </p>
+
+                <p>
+                    Alongside my Computer Science degree, I completed a minor in German,
+                    which was an enriching experience that pushed me out of my comfort zone.
+                    This journey deepened my cultural and linguistic understanding, and
+                    while I'm not yet fluent, my studies provided a strong foundation, on which
+                    continue to build.
+                </p>
+
+            </section>
+
+        </main>
+    </div>
+    
+    <footer>
+        <!-- <p>Contact:<p>  -->
+        <p>kapsnere@gmail.com</p>
+        <p>(715) 702 - 1771</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
