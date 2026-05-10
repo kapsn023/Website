@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Emmett Kapsner">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ray Tracer</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link
+        rel="icon" href="../assets/images/308074121-360px.jpg"
+        type="image/x-icon"
+    />
+</head>
+<body>
+    <div id="header"></div>
+
+    <main>
+
+    <section>
+	<h2>Ray Tracer</h2>
+
+	<section>
+
+	    <p>
+		Here are images from a ray tracer that I made independently and
+		completely from scratch in C. No libraries were used. It
+		implements a version of the Blinn-Phong reflection model. It is
+		able to display both sphere and triangles. These can be textured,
+		reflective and opaque or transparent. It naturally supports
+		both point and directional lights. Spotlights were not included,
+		but this could be added by simply ignoring the influence of
+		lights if the ray comes from an angle that is too large.
+	    </p>
+
+	    <p>
+		Ray tracers work by shooting a vector, which are called rays in
+		this context, into an environment filled by geometric shapes. For
+		a single ray and shape, the collision detection is relatively fast
+		and cheap. On collision, if the object struck is transparent and/or
+		reflective, then one or more rays are spawned from the point
+		of collision. The departing angle for these rays are dependent on
+		the normal at the point of collision and the direction from which
+		the original ray came. The process of ray spawning more rays could
+		go on forever, but a limit can be set. Once the rays reach this limit or
+		are no longer colliding, then color information is sent back up the
+		chain of rays until the camera recieves it and the color for the
+		corresponding pixel is set.
+	    </p>
+
+	    <p>
+		Lights in this ray tracer are modelled imperfectly but efficiently.
+		In this version of ray tracing, rays do not come from light sources
+		but rather the camera itself. This is less realistic but generally
+		more efficient. In order to make shadows look somewhat realistic,
+		a new ray is shot from every collision point to each and every light
+		source to check for any objects that would block light from the
+		collision point. This ray tracer is smart enough to take into
+		account transperency; if an object is at least partially transparent,
+		it will allow a corresponding amount of light through.
+	    </p>
+
+	    <p>
+		<a href="https://github.com/kapsn023/Raytracer"
+		target="_blank" rel="noopener noreferrer">GitHub</a>
+	    </p>
+
+	</section>
+
+	<section>
+
+	    <h3>
+		Reflection and Texturing of Spheres
+	    </h3>
+
+	    <img
+		src="../assets/images/raytracer/Ray_Tracer_Reflection.jpeg"
+		alt="Ray Tracer Image with Reflections"
+		width="300"
+		height="300"
+		class="float-image-left"
+	    >
+
+	    <p>
+		This image depicts a very reflective sphere within a larger textured
+		sphere. Though it may look like it, the smaller sphere in the center
+		of the image has no texture. What looks to be a texture is simply
+		the reflection of the larger sphere around it.
+	    </p>
+
+	    <p>
+		The way this is done is relatively simple. When a ray hits the smaller
+		sphere, no color information is directly imparted on the ray, as the
+		sphere is totally reflective. Instead, a second sphere is spawn and is
+		sent off in a direction that is the dictated by the normal vector and
+		the angle that the original ray impacted the sphere. This second ray
+		then collides with the larger sphere. The color information from the
+		texture on the larger sphere is imparted onto the ray, which then
+		gives that information to the first ray. From first ray's color
+		information, the camera is able to determine what color to make the
+		corresponding pixel. This process is done for every pixel in the image.
+	    </p>
+
+	</section>
+
+	<section>
+
+	    <h3>
+		Multiple Reflective and Transparent Spheres above Textured Triangles
+	    </h3>
+
+	    <img
+		src="../assets/images/raytracer/Ray_Tracer_Transparent.png"
+		alt="Ray Tracer Image with Transperency"
+		width="300"
+		height="300"
+		class="float-image-right"
+	    >
+
+	    <p>
+		There are two important secondary rays in work for each primary ray.
+		When a primary ray hits an object, it creates two new rays. One
+		reflects off of the object if the object is reflective and the other
+		goes into the object if it is transparent. The path of the secondary
+		ray that goes into the object is bent according to the normals of
+		said objects. Both of the secondary rays gather more color
+		information from any collisions and report weighted versions of
+		these colors back to the original ray.
+	    </p>
+
+	    <p>
+		The color information from any secondary rays is weighted by how
+		reflective or transparent the original object is. This can be seen
+		well by how the shadows on the map differ from one another. Depending
+		on the transperency of the spheres above, the corresponding shadow
+		will block more or less light from the light source above.
+	    </p>
+
+	</section>
+
+	<section>
+
+	    <h3>
+		Smooth and Flat Shading
+	    </h3>
+
+	    <section class="float-image-left">
+		<img
+		    src="../assets/images/raytracer/Flat_Shading.png"
+		    alt="Gouraud"
+		    width="380"
+		    height="190"
+		>
+		<img
+		    src="../assets/images/raytracer/Smooth_Shading.png"
+		    alt="Phong"
+		    width="380"
+		    height="190"
+		>
+	    </section>
+
+	    <p>
+		The ray tracer is capable of both smooth and flat shading for faces.
+		This is decided on a per face level. Each vertex contains information
+		for position, but also its normal. The flat shading assumes that the
+		face's normal is to be used for each of it's pixels. Smooth shading,
+		on the other hand, uses that normal stored in each of the vertices
+		and interpolates between them in order to create that smooth
+		appearence.
+
+	    </p>
+
+	    <p>
+		Both of these shading techniques
+		serve different purposes. Flat shading makes sense as kind of a
+		default; it serves as a great starting point and works great for
+		any boxy shapes, such as cubes or prisms. However if one wanted to
+		use it for a curved shape, it would take a significant amount of
+		polygons to make it look natural. This is where smooth shading comes
+		into play. This type of shading allows one to seemlessly give the
+		illusion of a curved surface, even if the shape is made up solely
+		of flat faces. This type of shading is less of a necessity in this
+		ray tracers, as spheres are fully supported, but it would still be
+		helpful for other curved shapes such as cylinders.
+	    </p>
+
+	    <p>
+		The picture on the left is not the best showcase of smooth shading's
+		potential advantages, and I would like to add a better picture for
+		that soon.
+	    </p>
+
+
+	</section>
+
+	<section>
+
+	    <h3>
+		Possible Future Extensions
+	    </h3>
+
+	    <p>
+		There a lot of potential directions I could take this project. The
+		biggest addition that I have plans for in the near future is to add
+		model importing. This would allow me to better illustrate the
+		capabilities of my ray tracer. Right now, each piece of geometry
+		has to be painstakingly placed into the virtual environment by hand.
+		All of the coordinates and material properties have to be explicitly
+		defined for each piece. Model importing would substantially hasten
+		this process. I believe that this ray tracer is quite powerful and
+		I would like the ability to fully demostrate this. This one change
+		would have the greatest impact on the rest of the project.
+	    </p>
+
+	    <p>
+		It would also be interesting to add the ability to natively display
+		cylinders. Currently, a cylinder would have to be made of triangles,
+		which does not take full advantage of the capabilities of ray tracers.
+		It would also involve a lot of interesting and difficult math.
+		Cylinders are significantly more difficult to show than mere triangles
+		or spheres. It would definitely prove to be an intersting challenge.
+	    </p>
+
+	    <p>
+		The biggest and most ambitious thing I would like to try is to port
+		this ray tracer over to the GPU. Currently, it runs completely on the
+		CPU without any mutlithreading. Because of this, it can often take
+		multiple seconds to get an image. This port should be able to keep
+		a lot of the same structure as the orginal ray tracer, but I would
+		have to take into account the differing advantages and limitations
+		of GPUs. My intention is to write it in GLSL, as that is the
+		shading language that I know the best.
+	    </p>
+
+	</section>
+
+    </section>
+</main>
+    <div id="footer"></div>
+<script src="/components/load.js"></script>
+</body>
+</html>
