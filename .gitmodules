@@ -1,3 +1,3 @@
 [submodule "raytracer"]
 	path = raytracer
-	url = git@github.com:kapsn023/Web-Raytracer.git
+	url = https://github.com/kapsn023/Web-Raytracer.git
