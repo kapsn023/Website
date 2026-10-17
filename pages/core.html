@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Emmett Kapsner">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nagios Core</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link
+        rel="icon" href="../assets/images/308074121-360px.jpg"
+        type="image/x-icon"
+    />
+</head>
+<body>
+    <div id="header"></div>
+
+    <main>
+
+    <section>
+	<h2>Nagios Core</h2>
+
+	<p>
+	    Nagios Core is an open-source monitoring system written in C. It has
+	    been around since 1999 (it was called NetSaint back then) and a lot
+	    of people still use it to monitor their servers and networks.
+	</p>
+
+	<p>
+	    I am the current maintainer of Nagios Core. I put out the last three
+	    releases, which were 4.5.12, 4.5.13 and 4.5.14.
+	</p>
+
+	<p>
+	    <a href="https://github.com/NagiosEnterprises/nagioscore"
+	    target="_blank" rel="noopener noreferrer">GitHub</a>
+	    |
+	    <a href="https://github.com/NagiosEnterprises/nagioscore/blob/master/Changelog"
+	    target="_blank" rel="noopener noreferrer">Changelog</a>
+	    |
+	    <a href="https://github.com/NagiosEnterprises/nagioscore/commits?author=ekapsner-ne"
+	    target="_blank" rel="noopener noreferrer">My commits</a>
+	</p>
+    </section>
+
+    <section>
+	<h3>Releases</h3>
+
+	<table>
+	    <tr>
+		<th>Version</th>
+		<th>Date</th>
+		<th>Notes</th>
+	    </tr>
+	    <tr>
+		<td><a href="https://github.com/NagiosEnterprises/nagioscore/releases/tag/nagios-4.5.14"
+		target="_blank" rel="noopener noreferrer">4.5.14</a></td>
+		<td>Aug 5, 2026</td>
+		<td>
+		    Security fixes, including a reflected XSS in cmd.cgi and
+		    sanitizing notification macros. Also a community fix for
+		    checks that stopped running if the last check time was in
+		    the future.
+		</td>
+	    </tr>
+	    <tr>
+		<td><a href="https://github.com/NagiosEnterprises/nagioscore/releases/tag/nagios-4.5.13"
+		target="_blank" rel="noopener noreferrer">4.5.13</a></td>
+		<td>May 28, 2026</td>
+		<td>
+		    More CSRF cookie fixes and sanitization for custom variables.
+		    Added the <code>cgi_cookie_fail_open</code> option.
+		</td>
+	    </tr>
+	    <tr>
+		<td><a href="https://github.com/NagiosEnterprises/nagioscore/releases/tag/nagios-4.5.12"
+		target="_blank" rel="noopener noreferrer">4.5.12</a></td>
+		<td>Mar 25, 2026</td>
+		<td>
+		    CSRF cookie fixes, plus a community fix for a compile error
+		    in runcmd.
+		</td>
+	    </tr>
+	</table>
+    </section>
+
+    <section>
+	<h3>Security Fixes</h3>
+
+	<p>
+	    Most of my work on these releases went into fixing vulnerabilities
+	    that security researchers reported to us. A lot of it came down to
+	    making sure user input gets sanitized before Nagios does anything
+	    with it.
+	</p>
+
+	<p>
+	    The CSRF cookie for cmd.cgi took up a good chunk of all three
+	    releases. cmd.cgi doesn't only get used by the web interface. Some
+	    third-party tools send commands to it directly, and the stricter
+	    CSRF checks broke them. For 4.5.13 I added the
+	    <code>cgi_cookie_fail_open</code> option so people who rely on
+	    those tools can turn it on, while everyone else keeps the stricter
+	    behavior by default.
+	</p>
+    </section>
+
+    </main>
+    <div id="footer"></div>
+<script src="/components/load.js"></script>
+</body>
+</html>

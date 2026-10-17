@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Emmett Kapsner">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NRPE</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link
+        rel="icon" href="../assets/images/308074121-360px.jpg"
+        type="image/x-icon"
+    />
+</head>
+<body>
+    <div id="header"></div>
+
+    <main>
+
+    <section>
+	<h2>NRPE</h2>
+
+	<p>
+	    NRPE (the Nagios Remote Plugin Executor) lets Nagios run
+	    <a href="plugins.html">plugins</a> on other machines. You install a
+	    small daemon on the remote server, Nagios asks it to run a check,
+	    and it sends back the result. This is mostly used for things you
+	    can't check from the outside, like disk usage.
+	</p>
+
+	<p>
+	    I am the current maintainer and I handled the 4.2.0 release.
+	</p>
+
+	<p>
+	    <a href="https://github.com/NagiosEnterprises/nrpe"
+	    target="_blank" rel="noopener noreferrer">GitHub</a>
+	    |
+	    <a href="https://github.com/NagiosEnterprises/nrpe/blob/master/CHANGELOG.md"
+	    target="_blank" rel="noopener noreferrer">Changelog</a>
+	</p>
+    </section>
+
+    <section>
+	<h3>4.2.0 (coming soon)</h3>
+
+	<p>
+	    Most of this release was contributed by Doug Nazar. It has a lot of
+	    cleanup in it:
+	</p>
+
+	<ul>
+	    <li>Automated tests and code coverage reporting</li>
+	    <li>Config options for picking IPv4 or IPv6 and for turning SSL/TLS on or off</li>
+	    <li>Fixes for several memory leaks and a buffer error</li>
+	    <li>Builds on AIX and Solaris again, and builds cleanly with <code>-Wall</code></li>
+	    <li>Builds with OpenSSL versions that don't include <code>engine.h</code></li>
+	    <li>Makefile fixes</li>
+	</ul>
+    </section>
+
+    </main>
+    <div id="footer"></div>
+<script src="/components/load.js"></script>
+</body>
+</html>

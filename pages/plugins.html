@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Emmett Kapsner">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nagios Plugins</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link
+        rel="icon" href="../assets/images/308074121-360px.jpg"
+        type="image/x-icon"
+    />
+</head>
+<body>
+    <div id="header"></div>
+
+    <main>
+
+    <section>
+	<h2>Nagios Plugins</h2>
+
+	<p>
+	    Nagios Core can't actually check anything on its own. For every
+	    check, it runs a separate program called a plugin and reads the
+	    result. Nagios Plugins is the standard collection of these, so
+	    almost every Nagios install depends on it.
+	</p>
+
+	<p>
+	    I am the current maintainer. Most of the code is written by people
+	    in the community, so my part is reviewing their pull requests,
+	    merging them, and putting out releases.
+	</p>
+
+	<p>
+	    <a href="https://github.com/nagios-plugins/nagios-plugins"
+	    target="_blank" rel="noopener noreferrer">GitHub</a>
+	    |
+	    <a href="https://github.com/nagios-plugins/nagios-plugins/blob/master/NEWS"
+	    target="_blank" rel="noopener noreferrer">Release notes</a>
+	</p>
+    </section>
+
+    <section>
+	<h3>
+	    <a href="https://github.com/nagios-plugins/nagios-plugins/releases/tag/release-2.5"
+	    target="_blank" rel="noopener noreferrer">2.5</a>
+	    (Mar 31, 2026)
+	</h3>
+
+	<p>
+	    This release had seven changes from seven different contributors.
+	</p>
+
+	<ul>
+	    <li>check_by_ssh has a new <code>--unknown-timeout</code> flag</li>
+	    <li>check_http no longer segfaults when an SSL connection fails</li>
+	    <li>Reverse lookups in check_dns work again</li>
+	    <li>check_ssh's remote protocol flag works now</li>
+	    <li>check_icmp gives the right error for the IPv6 address <code>::</code></li>
+	    <li>Some cleanup in check_procs</li>
+	    <li>The build uses <code>grep -E</code> instead of <code>egrep</code></li>
+	</ul>
+    </section>
+
+    </main>
+    <div id="footer"></div>
+<script src="/components/load.js"></script>
+</body>
+</html>
