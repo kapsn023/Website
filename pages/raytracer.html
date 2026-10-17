@@ -25,7 +25,7 @@
 		Here are images from a ray tracer that I made independently and
 		completely from scratch in C. No libraries were used. It
 		implements a version of the Blinn-Phong reflection model. It is
-		able to display both sphere and triangles. These can be textured,
+		able to display both spheres and triangles. These can be textured,
 		reflective and opaque or transparent. It naturally supports
 		both point and directional lights. Spotlights were not included,
 		but this could be added by simply ignoring the influence of
@@ -33,7 +33,7 @@
 	    </p>
 
 	    <p>
-		Ray tracers work by shooting a vector, which are called rays in
+		Ray tracers work by shooting vectors, which are called rays in
 		this context, into an environment filled by geometric shapes. For
 		a single ray and shape, the collision detection is relatively fast
 		and cheap. On collision, if the object struck is transparent and/or
@@ -43,7 +43,7 @@
 		the original ray came. The process of ray spawning more rays could
 		go on forever, but a limit can be set. Once the rays reach this limit or
 		are no longer colliding, then color information is sent back up the
-		chain of rays until the camera recieves it and the color for the
+		chain of rays until the camera receives it and the color for the
 		corresponding pixel is set.
 	    </p>
 
@@ -55,13 +55,15 @@
 		a new ray is shot from every collision point to each and every light
 		source to check for any objects that would block light from the
 		collision point. This ray tracer is smart enough to take into
-		account transperency; if an object is at least partially transparent,
+		account transparency; if an object is at least partially transparent,
 		it will allow a corresponding amount of light through.
 	    </p>
 
 	    <p>
 		<a href="https://github.com/kapsn023/Raytracer"
 		target="_blank" rel="noopener noreferrer">GitHub</a>
+		·
+		<a href="../raytracer/">Live demo</a>
 	    </p>
 
 	</section>
@@ -90,12 +92,12 @@
 	    <p>
 		The way this is done is relatively simple. When a ray hits the smaller
 		sphere, no color information is directly imparted on the ray, as the
-		sphere is totally reflective. Instead, a second sphere is spawn and is
-		sent off in a direction that is the dictated by the normal vector and
+		sphere is totally reflective. Instead, a second ray is spawned and
+		sent off in a direction that is dictated by the normal vector and
 		the angle that the original ray impacted the sphere. This second ray
 		then collides with the larger sphere. The color information from the
 		texture on the larger sphere is imparted onto the ray, which then
-		gives that information to the first ray. From first ray's color
+		gives that information to the first ray. From the first ray's color
 		information, the camera is able to determine what color to make the
 		corresponding pixel. This process is done for every pixel in the image.
 	    </p>
@@ -110,7 +112,7 @@
 
 	    <img
 		src="../assets/images/raytracer/Ray_Tracer_Transparent.png"
-		alt="Ray Tracer Image with Transperency"
+		alt="Ray Tracer Image with Transparency"
 		width="300"
 		height="300"
 		class="float-image-right"
@@ -131,7 +133,7 @@
 		The color information from any secondary rays is weighted by how
 		reflective or transparent the original object is. This can be seen
 		well by how the shadows on the map differ from one another. Depending
-		on the transperency of the spheres above, the corresponding shadow
+		on the transparency of the spheres above, the corresponding shadow
 		will block more or less light from the light source above.
 	    </p>
 
@@ -162,10 +164,10 @@
 		The ray tracer is capable of both smooth and flat shading for faces.
 		This is decided on a per face level. Each vertex contains information
 		for position, but also its normal. The flat shading assumes that the
-		face's normal is to be used for each of it's pixels. Smooth shading,
+		face's normal is to be used for each of its pixels. Smooth shading,
 		on the other hand, uses that normal stored in each of the vertices
 		and interpolates between them in order to create that smooth
-		appearence.
+		appearance.
 
 	    </p>
 
@@ -176,18 +178,13 @@
 		any boxy shapes, such as cubes or prisms. However if one wanted to
 		use it for a curved shape, it would take a significant amount of
 		polygons to make it look natural. This is where smooth shading comes
-		into play. This type of shading allows one to seemlessly give the
+		into play. This type of shading allows one to seamlessly give the
 		illusion of a curved surface, even if the shape is made up solely
 		of flat faces. This type of shading is less of a necessity in this
-		ray tracers, as spheres are fully supported, but it would still be
+		ray tracer, as spheres are fully supported, but it would still be
 		helpful for other curved shapes such as cylinders.
 	    </p>
 
-	    <p>
-		The picture on the left is not the best showcase of smooth shading's
-		potential advantages, and I would like to add a better picture for
-		that soon.
-	    </p>
 
 
 	</section>
@@ -199,7 +196,7 @@
 	    </h3>
 
 	    <p>
-		There a lot of potential directions I could take this project. The
+		There are a lot of potential directions I could take this project. The
 		biggest addition that I have plans for in the near future is to add
 		model importing. This would allow me to better illustrate the
 		capabilities of my ray tracer. Right now, each piece of geometry
@@ -207,7 +204,7 @@
 		All of the coordinates and material properties have to be explicitly
 		defined for each piece. Model importing would substantially hasten
 		this process. I believe that this ray tracer is quite powerful and
-		I would like the ability to fully demostrate this. This one change
+		I would like the ability to fully demonstrate this. This one change
 		would have the greatest impact on the rest of the project.
 	    </p>
 
@@ -217,15 +214,15 @@
 		which does not take full advantage of the capabilities of ray tracers.
 		It would also involve a lot of interesting and difficult math.
 		Cylinders are significantly more difficult to show than mere triangles
-		or spheres. It would definitely prove to be an intersting challenge.
+		or spheres. It would definitely prove to be an interesting challenge.
 	    </p>
 
 	    <p>
 		The biggest and most ambitious thing I would like to try is to port
 		this ray tracer over to the GPU. Currently, it runs completely on the
-		CPU without any mutlithreading. Because of this, it can often take
+		CPU without any multithreading. Because of this, it can often take
 		multiple seconds to get an image. This port should be able to keep
-		a lot of the same structure as the orginal ray tracer, but I would
+		a lot of the same structure as the original ray tracer, but I would
 		have to take into account the differing advantages and limitations
 		of GPUs. My intention is to write it in GLSL, as that is the
 		shading language that I know the best.
